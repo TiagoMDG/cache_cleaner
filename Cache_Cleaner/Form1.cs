@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -19,6 +20,8 @@ namespace Cache_Cleaner
 {
     public partial class Form1 : Form
     {
+        private static WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+        private bool hasAdministrativeRight = principal.IsInRole(WindowsBuiltInRole.Administrator);
         public Form1()
         {
             InitializeComponent();
@@ -65,9 +68,19 @@ namespace Cache_Cleaner
                 fileList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Network\\Cookies-journal");
             }
 
-            if (checkIECache.Checked)
+            if (checkIECache.Checked && hasAdministrativeRight)
             {
                 pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Microsoft\\Windows\\INetCache");
+            } else
+            {
+                var option = MessageBox.Show("You must run the application as administrator.\nDo you want to do it now?", "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (DialogResult.Yes == option)
+                {
+                    RunElevated(Application.ExecutablePath);
+                    this.Close();
+                    Application.Exit();
+                }
+                return;
             }
 
             if (!(fileList.Count > 0 || pathList.Count > 0))
@@ -78,6 +91,23 @@ namespace Cache_Cleaner
 
             filesArray = fileList.ToArray();
             RemoveFiles(pathList, filesArray);
+        }
+
+        private static bool RunElevated(string executablePath)
+        {
+            ProcessStartInfo processInfo = new ProcessStartInfo();
+            processInfo.Verb = "runas";
+            processInfo.FileName = executablePath;
+            try
+            {
+                Process.Start(processInfo);
+                return true;
+            }
+            catch (Win32Exception)
+            {
+                //Do nothing. Probably the user canceled the UAC window
+            }
+            return false;
         }
 
         private void RemoveFiles(List<string> pathList, string[] fileList)
