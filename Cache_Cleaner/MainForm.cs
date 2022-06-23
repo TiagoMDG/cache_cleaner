@@ -18,11 +18,12 @@ using IniParser.Model;
 
 namespace Cache_Cleaner
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private static WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
         private bool hasAdministrativeRight = principal.IsInRole(WindowsBuiltInRole.Administrator);
-        public Form1()
+        public static string ffProfile = firefoxProfile.get();
+        public MainForm()
         {
             InitializeComponent();
             DirectoryInfo di = Directory.CreateDirectory(Environment.CurrentDirectory + @"\logs");
@@ -46,13 +47,13 @@ namespace Cache_Cleaner
 
             if (checkFFCache.Checked)
             {
-                pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Roaming\\Mozilla\\Firefox\\" + getFFprofile() + "\\storage\\default");
-                pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Mozilla\\Firefox\\" + getFFprofile());
+                pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Roaming\\Mozilla\\Firefox\\" + ffProfile + "\\storage\\default");
+                pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Mozilla\\Firefox\\" + ffProfile);
             }
 
             if (checkFFCookies.Checked)
             {
-                fileList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Roaming\\Mozilla\\Firefox\\" + getFFprofile() + "\\cookies.sqlite");
+                fileList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Roaming\\Mozilla\\Firefox\\" + ffProfile + "\\cookies.sqlite");
             }
 
             if (checkGCCache.Checked)
@@ -68,20 +69,22 @@ namespace Cache_Cleaner
                 fileList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Network\\Cookies-journal");
             }
 
-            if (checkIECache.Checked && hasAdministrativeRight)
+            if (checkIECache.Checked)
             {
-                pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Microsoft\\Windows\\INetCache");
-            } else
-            {
-                var option = MessageBox.Show("You must run the application as administrator.\nDo you want to do it now?", "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (DialogResult.Yes == option)
+                if (!hasAdministrativeRight)
                 {
-                    RunElevated(Application.ExecutablePath);
-                    this.Close();
-                    Application.Exit();
+                    var option = MessageBox.Show("You must run the application as administrator.\nDo you want to do it now?", "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (DialogResult.Yes == option)
+                    {
+                        RunElevated(Application.ExecutablePath);
+                        this.Close();
+                        Application.Exit();
+                    }
+                    return;
                 }
-                return;
-            }
+                pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Microsoft\\Windows\\INetCache");
+                pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Temp");
+            } 
 
             if (!(fileList.Count > 0 || pathList.Count > 0))
             {
@@ -215,7 +218,13 @@ namespace Cache_Cleaner
             }, null);
         }
 
-        private string getFFprofile()
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelpForm help = new HelpForm();
+            help.ShowDialog();
+        }
+
+        /*private string getFFprofile()
         {
             string aux, profile;
             var parser = new FileIniDataParser();
@@ -233,7 +242,7 @@ namespace Cache_Cleaner
                     }
             }
             return null;
-        }
+        }*/
 
         /*protected override void OnPaintBackground(PaintEventArgs e)
         {
