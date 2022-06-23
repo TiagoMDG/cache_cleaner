@@ -18,7 +18,7 @@ namespace Cache_Cleaner
         {
             logFile.Write("\r\nLog Entry : ");
             logFile.WriteLine($"{DateTime.Now.ToLongTimeString()} {DateTime.Now.ToLongDateString()}");
-            logFile.WriteLine("  :");
+            logFile.WriteLine("Deleting Files;\n");
         }
 
         public void writeLog(string message)

@@ -155,9 +155,9 @@
             // progressLabel
             // 
             this.progressLabel.BackColor = System.Drawing.Color.Transparent;
-            this.progressLabel.Location = new System.Drawing.Point(234, 133);
+            this.progressLabel.Location = new System.Drawing.Point(134, 133);
             this.progressLabel.Name = "progressLabel";
-            this.progressLabel.Size = new System.Drawing.Size(52, 13);
+            this.progressLabel.Size = new System.Drawing.Size(252, 13);
             this.progressLabel.TabIndex = 8;
             this.progressLabel.Text = "Waiting...";
             this.progressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

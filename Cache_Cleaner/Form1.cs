@@ -55,6 +55,8 @@ namespace Cache_Cleaner
             if (checkGCCache.Checked)
             {
                 pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache");
+                pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Cache2\\entries");
+                fileList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Network\\Media Cache");
             }
 
             if (checkGCCookies.Checked)
