@@ -65,7 +65,7 @@ namespace Cache_Cleaner
 
             if (checkIECache.Checked)
             {
-                pathList.Add("C:/Users/" + Environment.UserName + "/AppData/Local/Microsoft/Windows/INetCache");
+                pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Microsoft\\Windows\\INetCache");
             }
 
             if (!(fileList.Count > 0 || pathList.Count > 0))
@@ -125,10 +125,7 @@ namespace Cache_Cleaner
 
                         this.BeginInvoke(new Action(() =>
                         {
-                            listBox1.Items.Add("Deleting: " + file);
-                            listBox1.SelectedIndex = listBox1.Items.Count - 1;
-                            listBox1.SelectedIndex = -1;
-                            log.writeLog("Deleting: " + file);
+                            log.writeLog(file);
                             progressLabel.Text = "Deleting Files: " + Convert.ToString(progressBar1.Value) + "/" + Convert.ToString(progressBar1.Maximum);
                         }));
                         this.BeginInvoke(new Action(() => progressBar1.PerformStep()));
@@ -150,10 +147,7 @@ namespace Cache_Cleaner
 
                         this.BeginInvoke(new Action(() =>
                         {
-                            listBox1.Items.Add("Deleting: " + dir);
-                            listBox1.SelectedIndex = listBox1.Items.Count - 1;
-                            listBox1.SelectedIndex = -1;
-                            log.writeLog("Deleting: " + dir);
+                            log.writeLog(dir);
                             progressLabel.Text = "Deleting Directories: " + Convert.ToString(progressBar1.Value) + "/" + Convert.ToString(progressBar1.Maximum);
                         }));
                         this.BeginInvoke(new Action(() => progressBar1.PerformStep()));
@@ -175,10 +169,7 @@ namespace Cache_Cleaner
 
                         this.BeginInvoke(new Action(() =>
                         {
-                            listBox1.Items.Add("Deleting: " + file);
-                            listBox1.SelectedIndex = listBox1.Items.Count - 1;
-                            listBox1.SelectedIndex = -1;
-                            log.writeLog("Deleting: " + file);
+                            log.writeLog(file);
                             progressLabel.Text = "Deleting Files: " + Convert.ToString(progressBar1.Value) + "/" + Convert.ToString(progressBar1.Maximum);
                         }));
                         this.BeginInvoke(new Action(() => progressBar1.PerformStep()));
@@ -212,7 +203,7 @@ namespace Cache_Cleaner
             return null;
         }
 
-        protected override void OnPaintBackground(PaintEventArgs e)
+        /*protected override void OnPaintBackground(PaintEventArgs e)
         {
             using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
                                                                        Color.AliceBlue,
@@ -221,6 +212,6 @@ namespace Cache_Cleaner
             {
                 e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }
-        }
+        }*/
     }
 }

@@ -32,7 +32,6 @@
             this.checkFFCookies = new System.Windows.Forms.CheckBox();
             this.checkFFCache = new System.Windows.Forms.CheckBox();
             this.btnRunTask = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkGCCookies = new System.Windows.Forms.CheckBox();
@@ -85,7 +84,7 @@
             // 
             // btnRunTask
             // 
-            this.btnRunTask.Location = new System.Drawing.Point(572, 207);
+            this.btnRunTask.Location = new System.Drawing.Point(528, 120);
             this.btnRunTask.Name = "btnRunTask";
             this.btnRunTask.Size = new System.Drawing.Size(119, 52);
             this.btnRunTask.TabIndex = 1;
@@ -93,19 +92,11 @@
             this.btnRunTask.UseVisualStyleBackColor = true;
             this.btnRunTask.Click += new System.EventHandler(this.btnRunTask_Click);
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(14, 135);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(541, 95);
-            this.listBox1.TabIndex = 2;
-            // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(14, 236);
+            this.progressBar1.Location = new System.Drawing.Point(15, 149);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(541, 23);
+            this.progressBar1.Size = new System.Drawing.Size(491, 23);
             this.progressBar1.TabIndex = 4;
             // 
             // groupBox2
@@ -163,13 +154,13 @@
             // 
             // progressLabel
             // 
-            this.progressLabel.AutoSize = true;
             this.progressLabel.BackColor = System.Drawing.Color.Transparent;
-            this.progressLabel.Location = new System.Drawing.Point(248, 241);
+            this.progressLabel.Location = new System.Drawing.Point(234, 133);
             this.progressLabel.Name = "progressLabel";
             this.progressLabel.Size = new System.Drawing.Size(52, 13);
             this.progressLabel.TabIndex = 8;
             this.progressLabel.Text = "Waiting...";
+            this.progressLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // toolStripLabel1
             // 
@@ -191,7 +182,7 @@
             this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(706, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(656, 24);
             this.menuStrip1.TabIndex = 10;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -212,13 +203,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(706, 273);
+            this.ClientSize = new System.Drawing.Size(656, 179);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.btnRunTask);
             this.Controls.Add(this.groupBox1);
             this.MainMenuStrip = this.menuStrip1;
@@ -244,7 +234,6 @@
         private System.Windows.Forms.CheckBox checkFFCookies;
         private System.Windows.Forms.CheckBox checkFFCache;
         private System.Windows.Forms.Button btnRunTask;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox checkGCCookies;

@@ -23,7 +23,7 @@ namespace Cache_Cleaner
 
         public void writeLog(string message)
         {
-            logFile.WriteLine(" " + message);
+            logFile.WriteLine("\t" + message);
         }
 
         public void closeLog()
