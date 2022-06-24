@@ -26,8 +26,9 @@ namespace Cache_Cleaner
             logFile.WriteLine("\t" + message);
         }
 
-        public void closeLog()
+        public void closeLog(int errors)
         {
+            logFile.WriteLine("\nERRORS IN LOG: " + errors);
             logFile.WriteLine("\nEND OF LOG");
             logFile.Flush();
         }

@@ -45,6 +45,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.linkLabelRecommended = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -85,9 +86,9 @@
             // 
             // btnRunTask
             // 
-            this.btnRunTask.Location = new System.Drawing.Point(528, 120);
+            this.btnRunTask.Location = new System.Drawing.Point(528, 133);
             this.btnRunTask.Name = "btnRunTask";
-            this.btnRunTask.Size = new System.Drawing.Size(119, 52);
+            this.btnRunTask.Size = new System.Drawing.Size(119, 39);
             this.btnRunTask.TabIndex = 1;
             this.btnRunTask.Text = "Run Task";
             this.btnRunTask.UseVisualStyleBackColor = true;
@@ -201,12 +202,24 @@
             this.logsToolStripMenuItem.Text = "Logs";
             this.logsToolStripMenuItem.Click += new System.EventHandler(this.logsToolStripMenuItem_Click);
             // 
+            // linkLabelRecommended
+            // 
+            this.linkLabelRecommended.AutoSize = true;
+            this.linkLabelRecommended.Location = new System.Drawing.Point(548, 119);
+            this.linkLabelRecommended.Name = "linkLabelRecommended";
+            this.linkLabelRecommended.Size = new System.Drawing.Size(79, 13);
+            this.linkLabelRecommended.TabIndex = 11;
+            this.linkLabelRecommended.TabStop = true;
+            this.linkLabelRecommended.Text = "Recommended";
+            this.linkLabelRecommended.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRecommended_LinkClicked);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(656, 179);
+            this.Controls.Add(this.linkLabelRecommended);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.progressLabel);
             this.Controls.Add(this.groupBox3);
@@ -252,6 +265,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logsToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel linkLabelRecommended;
     }
 }
 

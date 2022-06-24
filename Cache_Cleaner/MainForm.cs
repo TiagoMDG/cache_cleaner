@@ -90,7 +90,7 @@ namespace Cache_Cleaner
                     }
                     return;
                 }
-                pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Microsoft\\Windows\\INetCache");
+                //pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Microsoft\\Windows\\INetCache"); Disabled due to being a junction file.
                 pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Temp");
             } 
 
@@ -126,6 +126,7 @@ namespace Cache_Cleaner
             string[] fileArray = new string[] {};
             string[] directoryArray = new string[] {};
             List<string> confirmedList = new List<string>();
+            int errors = 0;
 
             Logger log = new Logger();
             log.startLog();
@@ -156,7 +157,7 @@ namespace Cache_Cleaner
                     this.BeginInvoke(new Action(() =>
                     {
                         log.writeLog("Nothing to delete");
-                        log.closeLog();
+                        log.closeLog(errors);
                         MessageBox.Show("Nothing to delete.", "Jobs done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }));
                     return;
@@ -174,7 +175,15 @@ namespace Cache_Cleaner
 
                     foreach (String file in fileArray)
                     {
-                        File.Delete(file);
+                        try
+                        {
+                            File.Delete(file);
+                        }
+                        catch (Exception)
+                        {
+                            log.writeLog("ERROR Deleting - " + file);
+                            errors++;
+                        }
                         Thread.Sleep(1);
 
                         this.BeginInvoke(new Action(() =>
@@ -196,7 +205,15 @@ namespace Cache_Cleaner
 
                     foreach (String dir in directoryArray)
                     {
-                        Directory.Delete(dir, true);
+                        try
+                        {
+                            Directory.Delete(dir, true);
+                        }
+                        catch (Exception)
+                        {
+                            log.writeLog("ERROR Deleting - " + dir);
+                            errors++;
+                        }
                         Thread.Sleep(1);
 
                         this.BeginInvoke(new Action(() =>
@@ -218,7 +235,15 @@ namespace Cache_Cleaner
 
                     foreach (String file in confirmedList)
                     {
-                        File.Delete(file);
+                        try
+                        {
+                            File.Delete(file);
+                        }
+                        catch (Exception)
+                        {
+                            log.writeLog("ERROR Deleting - " + file);
+                            errors++;
+                        }
                         Thread.Sleep(1);
 
                         this.BeginInvoke(new Action(() =>
@@ -231,7 +256,7 @@ namespace Cache_Cleaner
                 }
                 this.BeginInvoke(new Action(() =>
                 {
-                    log.closeLog();
+                    log.closeLog(errors);
                     MessageBox.Show("Task Finished!", "Jobs done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }));
             }, null);
@@ -257,6 +282,21 @@ namespace Cache_Cleaner
             }
             process.StartInfo.FileName = (logPath);
             process.Start();
+        }
+
+        private void linkLabelRecommended_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            foreach (Control item in this.Controls)
+            {
+                if(item is GroupBox)
+                {
+                    GroupBox groupBox = (GroupBox)item;
+                    foreach (CheckBox checkBox in groupBox.Controls)
+                    {
+                        checkBox.Checked = true;
+                    }
+                }
+            }
         }
     }
 }

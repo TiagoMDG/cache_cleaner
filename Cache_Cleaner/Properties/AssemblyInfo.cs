@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Cache_Cleaner")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Cache Cleaner")]
+[assembly: AssemblyDescription("Browser cache cleaner for Firefox and Chrome. Also removes temporary files.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Kyntech")]
 [assembly: AssemblyProduct("Cache_Cleaner")]

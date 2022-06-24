@@ -76,7 +76,8 @@ namespace Cache_Cleaner
 
         private void linkLabeliETF_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            findDirectoryOpen(linkLabeliETF.Text);
+            //findDirectoryOpen(linkLabeliETF.Text);
+            MessageBox.Show("Directory currently disabled\nReason: It's considered a junction directory", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void linkLabeliETEMP_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
