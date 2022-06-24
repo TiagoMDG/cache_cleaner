@@ -28,15 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpForm));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.linkLabelFFCookies = new System.Windows.Forms.LinkLabel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.linkLabelFFCache2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabelFFCache = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
             this.checkFFCookies = new System.Windows.Forms.CheckBox();
             this.checkFFCache = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.linkLabelFFCache = new System.Windows.Forms.LinkLabel();
-            this.linkLabelFFCache2 = new System.Windows.Forms.LinkLabel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.linkLabelFFCookies = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.linkLabelGCMedia = new System.Windows.Forms.LinkLabel();
+            this.linkLabelGCCookiesJ = new System.Windows.Forms.LinkLabel();
             this.linkLabelGCCookies = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.linkLabelGCCache2 = new System.Windows.Forms.LinkLabel();
@@ -49,8 +52,6 @@
             this.linkLabeliETF = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.linkLabelGCCookiesJ = new System.Windows.Forms.LinkLabel();
-            this.linkLabelGCMedia = new System.Windows.Forms.LinkLabel();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -72,6 +73,57 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Mozilla Firefox";
+            // 
+            // linkLabelFFCookies
+            // 
+            this.linkLabelFFCookies.AutoSize = true;
+            this.linkLabelFFCookies.Location = new System.Drawing.Point(7, 137);
+            this.linkLabelFFCookies.Name = "linkLabelFFCookies";
+            this.linkLabelFFCookies.Size = new System.Drawing.Size(99, 13);
+            this.linkLabelFFCookies.TabIndex = 6;
+            this.linkLabelFFCookies.TabStop = true;
+            this.linkLabelFFCookies.Text = "linkLabelFFCookies";
+            this.linkLabelFFCookies.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelFFCookies_LinkClicked);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 124);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Files:";
+            // 
+            // linkLabelFFCache2
+            // 
+            this.linkLabelFFCache2.AutoSize = true;
+            this.linkLabelFFCache2.Location = new System.Drawing.Point(7, 79);
+            this.linkLabelFFCache2.Name = "linkLabelFFCache2";
+            this.linkLabelFFCache2.Size = new System.Drawing.Size(98, 13);
+            this.linkLabelFFCache2.TabIndex = 4;
+            this.linkLabelFFCache2.TabStop = true;
+            this.linkLabelFFCache2.Text = "linkLabelFFCache2";
+            this.linkLabelFFCache2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelFFCache2_LinkClicked);
+            // 
+            // linkLabelFFCache
+            // 
+            this.linkLabelFFCache.AutoSize = true;
+            this.linkLabelFFCache.Location = new System.Drawing.Point(7, 61);
+            this.linkLabelFFCache.Name = "linkLabelFFCache";
+            this.linkLabelFFCache.Size = new System.Drawing.Size(92, 13);
+            this.linkLabelFFCache.TabIndex = 3;
+            this.linkLabelFFCache.TabStop = true;
+            this.linkLabelFFCache.Text = "linkLabelFFCache";
+            this.linkLabelFFCache.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelFFCache_LinkClicked);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Directories:";
             // 
             // checkFFCookies
             // 
@@ -97,57 +149,6 @@
             this.checkFFCache.Text = "Cache";
             this.checkFFCache.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 44);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Directories:";
-            // 
-            // linkLabelFFCache
-            // 
-            this.linkLabelFFCache.AutoSize = true;
-            this.linkLabelFFCache.Location = new System.Drawing.Point(7, 61);
-            this.linkLabelFFCache.Name = "linkLabelFFCache";
-            this.linkLabelFFCache.Size = new System.Drawing.Size(92, 13);
-            this.linkLabelFFCache.TabIndex = 3;
-            this.linkLabelFFCache.TabStop = true;
-            this.linkLabelFFCache.Text = "linkLabelFFCache";
-            this.linkLabelFFCache.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelFFCache_LinkClicked);
-            // 
-            // linkLabelFFCache2
-            // 
-            this.linkLabelFFCache2.AutoSize = true;
-            this.linkLabelFFCache2.Location = new System.Drawing.Point(7, 79);
-            this.linkLabelFFCache2.Name = "linkLabelFFCache2";
-            this.linkLabelFFCache2.Size = new System.Drawing.Size(98, 13);
-            this.linkLabelFFCache2.TabIndex = 4;
-            this.linkLabelFFCache2.TabStop = true;
-            this.linkLabelFFCache2.Text = "linkLabelFFCache2";
-            this.linkLabelFFCache2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelFFCache2_LinkClicked);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 124);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Files:";
-            // 
-            // linkLabelFFCookies
-            // 
-            this.linkLabelFFCookies.AutoSize = true;
-            this.linkLabelFFCookies.Location = new System.Drawing.Point(7, 137);
-            this.linkLabelFFCookies.Name = "linkLabelFFCookies";
-            this.linkLabelFFCookies.Size = new System.Drawing.Size(99, 13);
-            this.linkLabelFFCookies.TabIndex = 6;
-            this.linkLabelFFCookies.TabStop = true;
-            this.linkLabelFFCookies.Text = "linkLabelFFCookies";
-            this.linkLabelFFCookies.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelFFCookies_LinkClicked);
-            // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
@@ -166,6 +167,28 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Google Chrome";
+            // 
+            // linkLabelGCMedia
+            // 
+            this.linkLabelGCMedia.AutoSize = true;
+            this.linkLabelGCMedia.Location = new System.Drawing.Point(7, 179);
+            this.linkLabelGCMedia.Name = "linkLabelGCMedia";
+            this.linkLabelGCMedia.Size = new System.Drawing.Size(93, 13);
+            this.linkLabelGCMedia.TabIndex = 8;
+            this.linkLabelGCMedia.TabStop = true;
+            this.linkLabelGCMedia.Text = "linkLabelGCMedia";
+            this.linkLabelGCMedia.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGCMedia_LinkClicked);
+            // 
+            // linkLabelGCCookiesJ
+            // 
+            this.linkLabelGCCookiesJ.AutoSize = true;
+            this.linkLabelGCCookiesJ.Location = new System.Drawing.Point(7, 160);
+            this.linkLabelGCCookiesJ.Name = "linkLabelGCCookiesJ";
+            this.linkLabelGCCookiesJ.Size = new System.Drawing.Size(107, 13);
+            this.linkLabelGCCookiesJ.TabIndex = 7;
+            this.linkLabelGCCookiesJ.TabStop = true;
+            this.linkLabelGCCookiesJ.Text = "linkLabelGCCookiesJ";
+            this.linkLabelGCCookiesJ.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGCCookiesJ_LinkClicked);
             // 
             // linkLabelGCCookies
             // 
@@ -299,28 +322,6 @@
             this.checkBox4.Text = "Cache / Internet Temporary Files";
             this.checkBox4.UseVisualStyleBackColor = true;
             // 
-            // linkLabelGCCookiesJ
-            // 
-            this.linkLabelGCCookiesJ.AutoSize = true;
-            this.linkLabelGCCookiesJ.Location = new System.Drawing.Point(7, 160);
-            this.linkLabelGCCookiesJ.Name = "linkLabelGCCookiesJ";
-            this.linkLabelGCCookiesJ.Size = new System.Drawing.Size(107, 13);
-            this.linkLabelGCCookiesJ.TabIndex = 7;
-            this.linkLabelGCCookiesJ.TabStop = true;
-            this.linkLabelGCCookiesJ.Text = "linkLabelGCCookiesJ";
-            this.linkLabelGCCookiesJ.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGCCookiesJ_LinkClicked);
-            // 
-            // linkLabelGCMedia
-            // 
-            this.linkLabelGCMedia.AutoSize = true;
-            this.linkLabelGCMedia.Location = new System.Drawing.Point(7, 179);
-            this.linkLabelGCMedia.Name = "linkLabelGCMedia";
-            this.linkLabelGCMedia.Size = new System.Drawing.Size(93, 13);
-            this.linkLabelGCMedia.TabIndex = 8;
-            this.linkLabelGCMedia.TabStop = true;
-            this.linkLabelGCMedia.Text = "linkLabelGCMedia";
-            this.linkLabelGCMedia.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGCMedia_LinkClicked);
-            // 
             // HelpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -329,6 +330,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HelpForm";
             this.Text = "Help: Directory/File deletion list";
             this.groupBox2.ResumeLayout(false);

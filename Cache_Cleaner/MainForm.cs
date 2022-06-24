@@ -22,11 +22,13 @@ namespace Cache_Cleaner
     {
         private static WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
         private bool hasAdministrativeRight = principal.IsInRole(WindowsBuiltInRole.Administrator);
+        private static string logPath = Environment.CurrentDirectory + @"\logs\";
         public static string ffProfile = firefoxProfile.get();
+
         public MainForm()
         {
             InitializeComponent();
-            DirectoryInfo di = Directory.CreateDirectory(Environment.CurrentDirectory + @"\logs");
+            DirectoryInfo di = Directory.CreateDirectory(logPath);
 
             /*CustomToolStripRenderer r = new CustomToolStripRenderer();
             r.RoundedEdges = false;
@@ -39,9 +41,15 @@ namespace Cache_Cleaner
             List<string> fileList = new List<string>();
             string[] filesArray = new string[] {};
 
-            if (Process.GetProcessesByName("firefox").Length > 0)
+            if (Process.GetProcessesByName("firefox").Length > 0) //Checking if Mozilla Firefox is running
             {
                 MessageBox.Show("Firefox must be shutdown before trying again", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (Process.GetProcessesByName("chrome").Length > 0) //Checking if Google Chrome is running
+            {
+                MessageBox.Show("Google Chrome must be shutdown before trying again", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -71,7 +79,7 @@ namespace Cache_Cleaner
 
             if (checkIECache.Checked)
             {
-                if (!hasAdministrativeRight)
+                if (!hasAdministrativeRight) //Checking to see if the program has Administrative Rights
                 {
                     var option = MessageBox.Show("You must run the application as administrator.\nDo you want to do it now?", "ERROR", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (DialogResult.Yes == option)
@@ -86,7 +94,7 @@ namespace Cache_Cleaner
                 pathList.Add("C:\\Users\\" + Environment.UserName + "\\AppData\\Local\\Temp");
             } 
 
-            if (!(fileList.Count > 0 || pathList.Count > 0))
+            if (!(fileList.Count > 0 || pathList.Count > 0)) //Checks if any of the boxes were checked by counting the number of elements in the lists
             {
                 MessageBox.Show("Nothing Selected!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -96,7 +104,7 @@ namespace Cache_Cleaner
             RemoveFiles(pathList, filesArray);
         }
 
-        private static bool RunElevated(string executablePath)
+        private static bool RunElevated(string executablePath) //Function for administrative rights
         {
             ProcessStartInfo processInfo = new ProcessStartInfo();
             processInfo.Verb = "runas";
@@ -139,8 +147,19 @@ namespace Cache_Cleaner
                 {
                     if (File.Exists(file))
                     {
-                        confirmedList.Add(file);   
+                        confirmedList.Add(file);
                     }
+                }
+
+                if (confirmedList.Count <= 0 && fileArray.Length <= 0 && directoryArray.Length <= 0)
+                {
+                    this.BeginInvoke(new Action(() =>
+                    {
+                        log.writeLog("Nothing to delete");
+                        log.closeLog();
+                        MessageBox.Show("Nothing to delete.", "Jobs done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }));
+                    return;
                 }
 
                 if (fileArray.Length > 0) //This block deletes all files from selected directories
@@ -224,35 +243,20 @@ namespace Cache_Cleaner
             help.ShowDialog();
         }
 
-        /*private string getFFprofile()
+        private void logsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string aux, profile;
-            var parser = new FileIniDataParser();
-            IniData data = parser.ReadFile("C:\\Users\\" + Environment.UserName + "\\AppData\\Roaming\\Mozilla\\Firefox\\profiles.ini");
-            foreach (var value in data.Sections)
-            {
-                if (value.SectionName.Contains("Install"))
-                    foreach (KeyData key in value.Keys)
-                    {
-                        if (key.KeyName == "Default")
-                        {
-                            aux = key.Value;
-                            return profile = aux.Replace("/", "\\");
-                        }
-                    }
-            }
-            return null;
-        }*/
+            Process process = new Process();
 
-        /*protected override void OnPaintBackground(PaintEventArgs e)
-        {
-            using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle,
-                                                                       Color.AliceBlue,
-                                                                       Color.White,
-                                                                       90F))
+            if (!Directory.Exists(logPath))
             {
-                e.Graphics.FillRectangle(brush, this.ClientRectangle);
+                MessageBox.Show("Logs Directory doesn't exist!\nWe will now create one for you.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DirectoryInfo di = Directory.CreateDirectory(logPath);
+                process.StartInfo.FileName = (logPath);
+                process.Start();
+                return;
             }
-        }*/
+            process.StartInfo.FileName = (logPath);
+            process.Start();
+        }
     }
 }

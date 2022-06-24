@@ -30,7 +30,6 @@ namespace Cache_Cleaner
         {
             logFile.WriteLine("\nEND OF LOG");
             logFile.Flush();
-            logFile.Close();
         }
     }
 }
