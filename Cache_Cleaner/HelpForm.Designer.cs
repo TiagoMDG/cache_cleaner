@@ -127,6 +127,7 @@
             // 
             // checkFFCookies
             // 
+            this.checkFFCookies.AutoCheck = false;
             this.checkFFCookies.AutoSize = true;
             this.checkFFCookies.Checked = true;
             this.checkFFCookies.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -139,6 +140,7 @@
             // 
             // checkFFCache
             // 
+            this.checkFFCache.AutoCheck = false;
             this.checkFFCache.AutoSize = true;
             this.checkFFCache.Checked = true;
             this.checkFFCache.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -243,6 +245,7 @@
             // 
             // checkBox1
             // 
+            this.checkBox1.AutoCheck = false;
             this.checkBox1.AutoSize = true;
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -255,6 +258,7 @@
             // 
             // checkBox2
             // 
+            this.checkBox2.AutoCheck = false;
             this.checkBox2.AutoSize = true;
             this.checkBox2.Checked = true;
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -312,6 +316,7 @@
             // 
             // checkBox4
             // 
+            this.checkBox4.AutoCheck = false;
             this.checkBox4.AutoSize = true;
             this.checkBox4.Checked = true;
             this.checkBox4.CheckState = System.Windows.Forms.CheckState.Checked;

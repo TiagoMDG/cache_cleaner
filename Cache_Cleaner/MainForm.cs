@@ -14,7 +14,7 @@ namespace Cache_Cleaner
     {
         private static WindowsPrincipal principal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
         private bool hasAdministrativeRight = principal.IsInRole(WindowsBuiltInRole.Administrator);
-        private static string logPath = Environment.CurrentDirectory + @"\logs\";
+        private static string logPath = Environment.CurrentDirectory + @"\Cache Cleaner Logs\";
         public static string ffProfile = firefoxProfile.get();
 
         public MainForm()
@@ -119,6 +119,7 @@ namespace Cache_Cleaner
             string[] directoryArray = new string[] {};
             List<string> confirmedList = new List<string>();
             int errors = 0;
+            int success = 0;
 
             Logger log = new Logger();
             log.startLog();
@@ -170,6 +171,7 @@ namespace Cache_Cleaner
                         try
                         {
                             File.Delete(file);
+                            success++;
                         }
                         catch (Exception)
                         {
@@ -200,6 +202,7 @@ namespace Cache_Cleaner
                         try
                         {
                             Directory.Delete(dir, true);
+                            success++;
                         }
                         catch (Exception)
                         {
@@ -230,6 +233,7 @@ namespace Cache_Cleaner
                         try
                         {
                             File.Delete(file);
+                            success++;
                         }
                         catch (Exception)
                         {
@@ -249,7 +253,7 @@ namespace Cache_Cleaner
                 this.BeginInvoke(new Action(() =>
                 {
                     log.closeLog(errors);
-                    MessageBox.Show("Task Finished!", "Jobs done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Task Finished!\nFiles Deleted: " + success + "\nErrors: " + errors, "Jobs done!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }));
             }, null);
         }

@@ -6,7 +6,7 @@ namespace Cache_Cleaner
     internal class Logger
     {
         private static string currentDir = Environment.CurrentDirectory;
-        private static string path = currentDir + @"\logs\" + DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss") + ".txt";
+        private static string path = currentDir + @"\Cache Cleaner Logs\" + DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss") + ".txt";
         private static FileStream fs = new FileStream(path, FileMode.Append, FileAccess.Write);
         private StreamWriter logFile = new StreamWriter(fs);
 

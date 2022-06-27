@@ -205,12 +205,12 @@
             // linkLabelRecommended
             // 
             this.linkLabelRecommended.AutoSize = true;
-            this.linkLabelRecommended.Location = new System.Drawing.Point(548, 119);
+            this.linkLabelRecommended.Location = new System.Drawing.Point(527, 119);
             this.linkLabelRecommended.Name = "linkLabelRecommended";
-            this.linkLabelRecommended.Size = new System.Drawing.Size(79, 13);
+            this.linkLabelRecommended.Size = new System.Drawing.Size(120, 13);
             this.linkLabelRecommended.TabIndex = 11;
             this.linkLabelRecommended.TabStop = true;
-            this.linkLabelRecommended.Text = "Recommended";
+            this.linkLabelRecommended.Text = "Recommended Settings";
             this.linkLabelRecommended.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRecommended_LinkClicked);
             // 
             // MainForm
