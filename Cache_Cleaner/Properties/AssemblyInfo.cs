@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Cache Cleaner")]
 [assembly: AssemblyDescription("Browser cache cleaner for Firefox and Chrome. Also removes temporary files.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Kyntech")]
+[assembly: AssemblyCompany("Tiago Gil")]
 [assembly: AssemblyProduct("Cache_Cleaner")]
-[assembly: AssemblyCopyright("Copyright © Kyntech 2022")]
+[assembly: AssemblyCopyright("Copyright © Tiago Gil 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
